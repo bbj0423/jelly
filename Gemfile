@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # 0806 추가
+gem "mini_magick"
 gem 'aws-sdk-rails' # AWS SDK
 gem 'carrierwave'
 gem 'fog-aws' # file upload
