@@ -1,0 +1,67 @@
+<!--메인 페이지-->
+   <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9 col-md-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          
+          <!--공지사항, 질의응답 요약-->
+            <div class="row">
+              <div class="col-md-6">
+					      <div class="board-row pull-left">
+	    						<div class="latest_main_title"><h3><b>공지사항</b></h3>							  
+	    						  <div class="pull-right">
+								      <a href="/home/notice" style="color: #000;" title="공지사항">더보기<i class="fa fa-angle-right"></i></a>
+							      </div> 
+							    </div>
+                    <table class="table">
+  		    				  	<tbody>
+  		    				  	  <tr>
+            <% for post in @notices %>
+                <td><a href="/home/show/<%=post.id %>"><%=post.title %>(<%=post.comments.length%>)</a></td>
+                <td><%=post.created_at.getlocal("+09:00").strftime("%Y.%m.%d")%></td>
+            </tr>
+            <%end%>
+  	    					    </tbody>
+	    					    </table>
+	    				  </div>
+	    				</div>
+					<div class="col-md-6">
+					      <div class="board-row pull-left">
+	    						<div class="latest_main_title"><h3><b>질의응답</b></h3>							  
+	    						  <div class="pull-right">
+								      <a href="/home/ask" style="color: #000;" title="질의응답">더보기<i class="fa fa-angle-right"></i></a>
+							      </div>
+							    </div>
+                    <table class="table">
+  		    				  	<tbody>
+                        <tr>
+            <% for post in @asks %>
+                <td><a href="/home/show/<%=post.id %>"><%=post.title %>(<%=post.comments.length%>)</a></td>
+                <td><%=post.created_at.getlocal("+09:00").strftime("%Y.%m.%d")%></td>
+            </tr>
+            <%end%>
+  	    					    </tbody>
+	    					    </table>
+	    				  </div>
+	    				</div>
+        </div><!--/row-->
+      </div><!--/.col-xs-12.col-sm-9-->
+    </div>
+  </div><!--/row-->
+</div><!--/.container-->
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="offcanvas.js"></script>

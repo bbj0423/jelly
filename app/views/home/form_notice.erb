@@ -1,0 +1,35 @@
+<!--공지사항 글쓰기-->
+        <div class="col-xs-12 col-sm-9 col-md-7">
+            <div class="container">
+                <h1>공지사항</h1>
+                <hr>
+ 
+                 <%= form_tag home_create_path, method: 'post', multipart: true do %>
+                        <div class="col-xs-12 col-sm-9">
+
+                            <!--받아온 글 폼-->
+                             <p>제목</p>
+                        <%= text_field_tag "input_title", nil, :placeholder =>"제목을 입력해주세요!" %>
+                        <%= text_area_tag "input_content", nil %>
+                        <%= hidden_field_tag "user_id", nil, :value => current_user.id %>
+                        <%= hidden_field_tag "notice", nil, :value => true %>
+                        <%= hidden_field_tag "cate_id", nil, :value => nil %>
+                        <%= hidden_field_tag "major_id", nil, :value => current_user.major1_id %>
+                        <!--이미지 하고 파일에 대한 것 컨트롤러에 아직 명시 안해줬어요!-->
+                
+                        <p>이미지</p>   
+                        <input type="file" name="input_image" accept="image/*">
+                        <p>파일</p> 
+                        <input type="file" name="input_doc" accept="file_extension">
+                        
+                        <script>
+                            // Replace the <textarea id="editor1"> with a CKEditor
+                            // instance, using default configuration.
+                            CKEDITOR.replace( 'input_content' );
+                         </script>
+                         <%= submit_tag '등록하기' %>
+                    <% end %>
+                </div>
+            </div>
+            </div>
+          </div>

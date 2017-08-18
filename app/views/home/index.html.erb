@@ -1,0 +1,13 @@
+<h1>지금까지 작성된 post들 입니당</h1>
+
+<%= form_tag home_index_path, :method => 'get', :id => "posts_search" do %>
+  <p>
+    <%= select_tag 'category_id', options_for_select(@category.all.collect{ |c| [c.name, c.id] }), :prompt => "카테고리"%>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :title => nil %>
+  </p>
+  <div id="posts"><%= render 'posts' %></div>
+<% end %>
+
+<br>
+<%= link_to "새글 쓰러가기", home_new_path %> 

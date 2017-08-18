@@ -1,0 +1,32 @@
+<!--질의응답-->
+<div class="container">
+    <!--그리드-->
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+            <div class="qna">
+                <div id="ask">
+                <h1>공지사항</h1>
+                <h4>1전공 공지사항</h4>
+                </div>
+                <div id="posts"><%= render 'noticeposts' %></div>
+            <!--공지사항 검색창-->
+            <div class="board_search">
+      
+          <span class="search"> 
+            <%= form_tag home_notice_path, :method => 'get', :id => "posts_search" do %>
+             <p>
+            <% select_tag 'category_id', options_for_select(@category.all.collect{ |c| [c.name, c.id] }), :prompt => "카테고리"%>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "검색", :title => nil %>
+             </p>
+            <% end %>
+            </span>
+            <% if current_user.admin == true %>
+                <%= link_to "새로운 공지작성", home_form_notice_path %>
+            <% end %>
+            </div>
+            <!--글쓰기-->
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,43 @@
+  <h1>MESSAGE</h1>
+  
+   <!--메시지 창-->
+    <div class="message_whole">
+      <hr>
+        <div class="message_name_wrap">
+            <div class="profile_sumnail_main_dm">
+                <!--메시지 하는 사람 이미지-->
+                <div class="dm_image"><img src="<%=asset_path 'jjj.png'%>" alt="이미지 사진" class="img-circle" style="width:50px; height:50px;"></div>
+                <div class="dm_name"><h4>bryan</h4></div>
+            </div>
+        </div>
+        <div class="message_wrap">
+            <div class="message_content">
+             <!--상대방의 메시지-->
+                <div class="his_message">
+                    <img src="<%=asset_path 'jj.png'%>" alt="이미지 사진" class="img-circle" style="width:20px; height:20px;"><em>안녕하세용</em>
+                </div>
+            </div>
+            <!--내 메시지-->
+            <div class="my_message">
+                <em>저도 안녕하세용</em>
+            </div>
+                 <!--상대방의 메시지-->
+            <div class="his_message">
+                <img src="<%=asset_path 'jj.png'%>" alt="이미지 사진" class="img-circle" style="width:20px; height:20px;"><em>잘 지내세용</em>
+            </div>
+            <div class="my_message">
+                <em>맞아용 잘지내용</em>
+            </div>
+            </div>
+
+        <!--메시지 체팅창-->
+    <div id="message_div">
+        <!--텍스트 창-->
+        <input type="text" id="message_input">
+        <!--젤리 이미지-->
+        <a href="#"><img src="<%=asset_path 'jjj.png'%>" alt="보내기" id="send_img" width="20px" height="20px"></img></a>
+    </div>
+
+    </div>
+
+

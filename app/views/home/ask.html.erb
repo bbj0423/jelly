@@ -1,0 +1,30 @@
+<!--질의응답-->
+<div class="container">
+    <!--그리드-->
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+            <div class="qna">
+                <div id="ask">
+                <h1>질의응답</h1>
+                <h4>모든 질의응답들</h4>
+                </div>
+                <div id="posts"><%= render 'askposts' %></div>
+            <!--질의응답 글쓰기 창-->
+            <div class="board_search">
+      
+          <span class="search"> 
+            <%= form_tag home_ask_path, :method => 'get', :id => "posts_search" do %>
+             <p>
+            <%= select_tag 'category_id', options_for_select(@category.all.collect{ |c| [c.name, c.id] }), :prompt => "카테고리"%>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "검색", :title => nil %>
+             </p>
+            <% end %>
+            </span>  
+            <%= link_to "새로운 질문하기", home_form_ask_path %>
+            </div>
+            <!--글쓰기-->
+        </div>
+    </div>
+</div>
+</div>

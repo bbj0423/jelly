@@ -1,0 +1,27 @@
+// 0806 / 추가 / 김단아 / 잠시 CSS 예쁘게 꾸미기_실제 서비스에서는 필요 X
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "devise_bootstrap_views";
+
+//회원가입 화면
+body{
+  font-family: "나눔고딕","NanumGothic","Arial",Arial,NanumGothic,sans-serif;
+}
+#container{
+    clear: both;
+    width: 50%;
+    margin: 100px auto;
+    opacity: 0.90;
+}
+#sign_in_box_2{
+    width:100%;
+}
+.sign_in_box{
+    background-color:white;
+}
+.panel-heading{
+    background-color:white;
+}
+.renders{
+    color:white;
+}

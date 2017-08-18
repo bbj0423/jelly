@@ -1,0 +1,45 @@
+       <!--질문 게시판 글쓰기-->
+        <div class="col-xs-12 col-sm-9 col-md-7">
+            <div class="container write_wrap">
+<!--질문 게시판 글쓰기-->
+                <h1>질문 게시판</h1>
+                <hr>
+                
+                 <%= form_tag home_create_path, method: 'post', multipart: true do %>
+                        <div class="col-xs-12 col-sm-9">
+                            <div class="select_option">
+                            <div class="cat">
+                            <h3>카테고리</h3>
+                            <span>
+                                <!--아직 카테고리 컨트롤러에 명시 안해줬어요!-->
+                            <%= select_tag "cate_id", options_from_collection_for_select(@category, "id", "name"), prompt: "카테고리" %>
+                            </span>
+                            <hr>
+                            </div>
+                            </div>
+                            <!--받아온 글 폼-->
+                             <p>제목</p>
+                        <%= text_field_tag "input_title", nil, :placeholder =>"제목을 입력해주세요!" %>
+                        <%= text_area_tag "input_content", nil %>
+                        <%= hidden_field_tag "user_id", nil, :value => current_user.id %>
+                        <%= hidden_field_tag "notice", nil, :value => false %>
+                        <%= hidden_field_tag "major_id", nil, :value => nil %>
+                        <!--이미지 하고 파일에 대한 것 컨트롤러에 아직 명시 안해줬어요!-->
+                
+                
+                        <p>이미지</p>   
+                        <input type="file" name="input_image" accept="image/*">
+                        <p>파일</p> 
+                        <input type="file" name="input_doc" accept="file_extension">
+                        
+                        <script>
+                            // Replace the <textarea id="editor1"> with a CKEditor
+                            // instance, using default configuration.
+                            CKEDITOR.replace( 'input_content' );
+                         </script>
+                         <%= submit_tag '질문하기' %>
+                    <% end %>
+                </div>
+            </div>
+            </div>
+          </div>

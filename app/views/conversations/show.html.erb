@@ -1,0 +1,31 @@
+<h1>MESSAGE</h1>
+  
+   <!--메시지 창-->
+    <div class="message_whole">
+      <hr>
+        <div class="message_name_wrap" id="conversation-main">
+            <div class="profile_sumnail_main_dm" id="conversation-body">
+                <!--메시지 하는 사람 이미지-->
+                  <h4><%= @conversation.with(current_user).nickname %></h4>
+            </div>
+        </div>
+        <div class="message_wrap">
+            <div class="message_content">
+             <!--상대방의 메시지-->
+                <div class="his_message">
+                    <em><%= render @conversation.personal_messages %></em>
+                </div>
+            </div>
+        </div>
+
+        <!--메시지 체팅창-->
+    <div id="message_div">
+        <!--텍스트 창-->
+        <%= form_for @personal_message do |f| %>
+            <%= hidden_field_tag 'conversation_id', @conversation.id %>
+            <%= f.label :body %>
+            <%= f.text_area :body %>
+            <%= f.submit %>
+        <% end %>
+    </div>
+    </div>

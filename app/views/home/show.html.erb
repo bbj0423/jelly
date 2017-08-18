@@ -1,0 +1,104 @@
+<div class="container write_wrap col-md-7">
+    <!--그리드-->
+        <div class="col-xs-12 col-sm-9">
+        <!--그리드--> 
+        <!--메인 글 내용-->
+                <!--제목-->
+                <h3> <%= @post.title %></h3>
+                    <hr>
+                    <!--글쓴이 정보-->
+                    <!--글쓴이 사진-->
+                    <div class="container">
+                <div id="written">
+                    <ul>
+                        <li><a href="/home/user_page" style="text-decoration:none;"><img src="<%=asset_path 'jjj.png'%>" alt="icon" class="member-icon" width="20" height="20"><%= link_to "익명", new_personal_message_path(receiver_id: @post.user_id) %></a></li>
+                        <!--댓글 수-->
+                        <li><i class="fa fa-comments"></i><%=@post.comments.length%></li>
+                        <!--조회수-->
+                        <li><i class="fa fa-eye"></i><%="#{@post.impressions_count}" %></li>
+                        <!--좋아요 수-->
+                        <li><i class="fa fa-thumbs-up"></i> <span class="post-like">1234</span></li>
+                        <!--업로드 날짜-->
+                        <li class="pull-right time"><i class="fa fa-clock-o"></i><%=@post.updated_at.getlocal("+09:00").strftime("%Y.%m.%d")%></li>
+                    </ul>
+                </div> 
+                </div>
+                <!--컨텐츠 내용-->
+                <div class="container">
+                    <div class="written_content">
+                        <%= @post.content.html_safe %>
+                      
+                      <%= image_tag("#{@post.image}") %>
+                        
+                    </div>
+                </div>
+                <br>
+                    <% if current_user.id == @post.user_id%>
+                    <%= link_to '이 글 수정', edit_post_path(@post.id) %>
+                <br>
+                    <%= link_to '이 글 삭제', destroy_post_path(@post.id), method: 'post', data: {confirm: "정말 삭제하실 건가요?"} %>
+                <br>
+                <% end %>
+                
+                <% if @post.notice == true%>
+                    <%= link_to '목록으로!', home_notice_path %>
+                <% else %>
+                    <%= link_to '목록으로!', home_ask_path %>
+                <% end %>
+                                
+                <!--댓글-->
+                <div class="comment_write">
+         <div id="message_div">
+        <!--텍스트 창-->
+        <!--<textarea type="text" id="message_input2" placeholder="댓글을 입력해 주세요"></textarea>-->
+        <div id="comments">
+          <% @post.comments.each do |comment| %>   
+            <%= render partial: "comments/item", locals: { comment: comment } %>
+          <% end %>
+        </div>    
+        <%= form_for [@post, @post.comments.new], remote: true do |f| %>
+          <%= f.hidden_field:user_id, :value => current_user.id %>
+          <%= f.text_area :content %>
+          <%= f.submit %>
+        <% end %>
+        <!--젤리 이미지-->
+        <a href="#"><img src="<%=asset_path 'jjj.png'%>" alt="보내기" id="send_img" width="30px" height="30px"></img></a>
+    </div>
+            </div><!--그리드-->
+        </div><!--container-->
+<div class="write_delete">
+                 삭제<a href="/home/show/<%#=@post.id%>/<%#=comment.id%>/recomments/destroy/<%#=recomment.id%>" data-method= "post" data-confirm= "정말로?" >{x}</a> <br>
+                </div> 
+
+
+<!--# 여기서부터가 댓글 대댓글 코드입니당~~~~-->
+    <!--<h3>댓글입니당</h3>-->
+    <!--<form action='/home/show/<%#=@post.id%>/comments/create' method="post">-->
+    <!--    <input type="text" name="input_comment" placeholder="댓글">-->
+    <!--    <input type="submit">-->
+    <!--</form>-->
+    
+    <!--<hr>-->
+    <!--<%# @comments.each do |comment| %>-->
+    <!--<p>-->
+    <!--    -><%#=comment.content %> -->
+    <!--    <a href="/home/show/<%#=@post.id%>/comments/destroy/<%#=comment.id%>" -->
+    <!--    data-method= "post"-->
+    <!--    data-confirm= "정말로?"-->
+    <!--    >{x}</a>-->
+    <!--</p>-->
+    <!--        <%# @recomments.where(:comment_id => comment.id).each do |recomment| %>-->
+                <!-----><%#= recomment.content %><!-- <a href="/home/show/<%#=@post.id%>/<%#=comment.id%>/recomments/destroy/<%#=recomment.id%>" data-method= "post" data-confirm= "정말로?" >{x}</a> <br>
+           
+    <!--        <%# end %>-->
+   
+    <!--        <form action='/home/show/<%#=@post.id%>/<%#=comment.id%>/recomments/create' method="post">-->
+    <!--            <input type="text" name="input_recomment" placeholder="대댓글">-->
+    <!--            <input type="submit">-->
+    <!--        </form>-->
+        
+    <!--        <hr>-->
+    <!--<%# end %>-->
+<!--# 여기까지가 댓글 대댓글 코드입니당 ~~~~~~~-->
+
+

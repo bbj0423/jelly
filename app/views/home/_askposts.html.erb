@@ -1,0 +1,29 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="cols">카테고리</th>
+                <th scope="cols"><%= sortable "title", "질문" %></th>
+                <th scope="cols">내용</th>
+                <th scope="cols"><%= sortable "impressions_count", "조회수"%></th>
+                <th scope="cols"><%= sortable "created_at", "작성일" %></th>
+                <th scope="cols">Jellyit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <% for post in @posts %>
+                <th scope="row"><%=post.category_id%></th>
+                <td><a href="/home/show/<%=post.id %>"><%=post.title %>(<%=post.comments.length%>)</a></td>
+                <td><%=post.content.html_safe %></td>
+                <td><%="#{post.impressions_count}" %></td>
+                <td><%=post.created_at.getlocal("+09:00").strftime("%Y.%m.%d %H:%M")%></td>
+                <td>456</td>
+            </tr>
+            <%end%>
+        </tbody>
+    </table>
+
+<%= will_paginate @posts %>

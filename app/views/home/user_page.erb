@@ -1,0 +1,62 @@
+<div class="col-xs-8 col-sm-6 col-md-8 ">
+    <div class="container">        
+        <div class="user_container">
+                            <div id="ask">
+                            <h1>USER PAGE</h1>
+                <h4>유저페이지</h4>
+                </div> 
+            <div class="profile_sumnail_main">
+                <h4><%= current_user.nickname %></h4>
+                <img src="<%=asset_path 'jjj.png'%>" alt="이미지 사진" class="img-circle" style="width:100px; height:100px;">
+            </div>
+            <div class="user_page_content">
+                <label>제 1 전공</label><em><%= current_user.major1.name %></em>
+            </div>
+
+                <span class="user_table_list"><h4>내가 쓴 글 목록</h4></span>
+                <div id="posts"><%= render 'userpages' %></div>
+                <span class="user_table_list"><h4>내가 좋아요 한 글 목록</h4></span>
+                <table class="table table-striped">
+                    <tr>
+                        <th>number</th>
+                        <th>title</th> 
+                        <th>views</th>
+                        <th>update</th>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>오늘 밥이 뭔가욤?</td> 
+                        <td>40</td>
+                        <td>7.5</td>
+                     </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>이중전공 문의</td> 
+                        <td>50</td>
+                        <td>7.8</td>
+                     </tr>
+                </table>
+                <span class="user_table_list"><h4>내가 댓글 단 글 목록</h4></span>
+                <table class="table table-striped">
+                    <tr>
+                        <th>number</th>
+                        <th>title</th> 
+                        <th>views</th>
+                        <th>update</th>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>오늘 밥이 뭔가욤?</td> 
+                        <td>40</td>
+                        <td>7.5</td>
+                     </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>이중전공 문의</td> 
+                        <td>50</td>
+                        <td>7.8</td>
+                     </tr>
+                </table>            
+            </div>
+        </div>
+    </div>
